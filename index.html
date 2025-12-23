@@ -2,43 +2,91 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>แหล่งท่องเที่ยวชุมชน</title>
+  <title>แนะนำที่พักและโรงแรม</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>วัดชุมชนเก่า</h1>
-    <p>แหล่งท่องเที่ยวเชิงวัฒนธรรม</p>
-  </header>
+<header>
+    <h1>ศานิตา คอทเทจ</h1>
+    <p>ที่พักบรรยากาศ สไตล์ธรรมชาติยุโรป</p>
+</header>
 
-  <section>
-    <img src="image1.jpg" alt="วัดชุมชนเก่า">
-    <p>
-      วัดชุมชนเก่าเป็นสถานที่สำคัญของชุมชน
-      มีประวัติความเป็นมายาวนาน และเป็นแหล่งเรียนรู้ด้านวัฒนธรรมท้องถิ่น
-    </p>
-  </section>
+<section>
+  <div class="slider" id="slider">
+    <img src="img1.jpg" class="slide active">
+    <img src="img2.jpg" class="slide">
+    <img src="img3.jpg" class="slide">
+  </div>
 
-  <section>
-    <h2>ข้อมูลเพิ่มเติม</h2>
-    <ul>
-      <li>⏰ เวลาเปิด: 08.00 – 17.00 น.</li>
-      <li>📍 ที่ตั้ง: ตำบลตัวอย่าง อำเภอตัวอย่าง</li>
-    </ul>
-  </section>
+  <p>
+      ศานิตา คอทเทจเป็นที่พักขนาดเล็ก เหมาะสำหรับผู้ที่ต้องการพักผ่อน
+      มีบรรยากาศเงียบสงบ ให้ความเป็นส่วนตัว และตั้งอยู่ใกล้แหล่งชุมชน
+  </p>
+</section>
 
-  <section class="contact">
-    <h2>ติดต่อสถานที่</h2>
-    <a href="tel:0812345678">📞 โทรศัพท์</a>
-    <a href="https://www.facebook.com/" target="_blank">📘 Facebook</a>
-    <a href="https://maps.google.com/" target="_blank">📍 Google Maps</a>
-  </section>
+<section>
+  <h2>ข้อมูลที่พัก</h2>
+  <ul>
+      <li>🛏️ ประเภทห้องพัก: ห้องพักมาตรฐาน</li>
+      <li>👥 รองรับผู้เข้าพัก: 2–4 คน</li>
+      <li>⏰ เวลาเช็กอิน: 12.00 น. / เช็กเอาต์: 12.00 น.</li>
+      <li>📍 ที่ตั้ง: 264 ซอยเทศบาล 15 อ.จอมบึง, 70150 จอมบึง, ราชบุรี</li>
+  </ul>
+</section>
 
-  <footer>
-    <p>© AR Tour Platform</p>
-  </footer>
+<section class="contact">
+  <h2>ติดต่อที่พัก</h2>
+    <a href="tel:0819796890">📞 โทรศัพท์</a>
+    <a href="https://shorturl.asia/QroA0" target="_blank">📘 Facebook</a>
+    <a href="https://shorturl.asia/ocfXZ" target="_blank">📍 Google Maps</a>
+</section>
+
+<footer>
+  <p>© Web-based Hotel Information</p>
+</footer>
+
+<!-- Fullscreen Image -->
+<div class="fullscreen" id="fullscreen">
+  <img id="fullImg">
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+const slider = document.getElementById("slider");
+const fullscreen = document.getElementById("fullscreen");
+const fullImg = document.getElementById("fullImg");
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+// swipe
+let startX = 0;
+slider.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+slider.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) current = (current + 1) % slides.length;
+  if (endX - startX > 50) current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+});
+
+// fullscreen
+slides.forEach(img => {
+  img.addEventListener("click", () => {
+    fullscreen.style.display = "flex";
+    fullImg.src = img.src;
+  });
+});
+fullscreen.addEventListener("click", () => {
+  fullscreen.style.display = "none";
+});
+</script>
 
 </body>
 </html>
