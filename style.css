@@ -1,6 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #f2f2f2;
 }
 
@@ -18,10 +18,25 @@ section {
   border-radius: 8px;
 }
 
-img {
+.slider {
+  position: relative;
   width: 100%;
+  height: 230px;
+  overflow: hidden;
   border-radius: 8px;
-  margin-bottom: 10px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.slide.active {
+  opacity: 1;
 }
 
 ul {
@@ -42,6 +57,22 @@ ul {
 footer {
   text-align: center;
   padding: 10px;
-  color: #777;
   font-size: 14px;
+  color: #777;
+}
+
+/* fullscreen */
+.fullscreen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.fullscreen img {
+  max-width: 95%;
+  max-height: 95%;
 }
