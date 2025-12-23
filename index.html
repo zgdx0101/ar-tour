@@ -73,7 +73,9 @@ slider.addEventListener("touchend", e => {
   let endX = e.changedTouches[0].clientX;
   if (startX - endX > 50) current = (current + 1) % slides.length;
   if (endX - startX > 50) current = (current - 1 + slides.length) % slides.length;
-  showSlide(current);
+
+  slides.forEach(s => s.classList.remove("active"));
+  slides[current].classList.add("active");
 });
 
 // fullscreen
