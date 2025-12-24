@@ -1,78 +1,141 @@
+/* ===== Reset & Base ===== */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  line-height: 1.6;
 }
 
+/* ===== Header ===== */
 header {
-  background: #2c3e50;
-  color: white;
-  padding: 20px;
+  background-color: #2f5d50;
+  color: #ffffff;
   text-align: center;
+  padding: 24px 16px;
 }
 
+header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+header p {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===== Section ===== */
 section {
-  background: white;
+  background: #ffffff;
   margin: 12px;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
+section h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #2f5d50;
+}
+
+/* ===== Image Slider ===== */
 .slider {
   position: relative;
-  width: 100%;
-  height: 230px;
   overflow: hidden;
-  border-radius: 8px;
+  height: 220px;
+  margin-bottom: 12px;
 }
 
 .slide {
-  position: absolute;
   width: 100%;
-  height: 100%;
+  height: 220px;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.4s;
+  border-radius: 10px;
+  display: none;
 }
 
 .slide.active {
-  opacity: 1;
+  display: block;
 }
 
+/* ===== Text ===== */
+p {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* ===== List ===== */
 ul {
-  padding-left: 20px;
+  padding-left: 18px;
+  margin: 0;
 }
 
+ul li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* ===== Video Scroll ===== */
+.video-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.video-scroll video {
+  width: 260px;
+  height: 150px;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* ===== Contact ===== */
 .contact a {
   display: block;
-  margin: 10px 0;
-  padding: 12px;
-  background: #3498db;
-  color: white;
+  padding: 10px;
+  margin: 8px 0;
   text-align: center;
   text-decoration: none;
-  border-radius: 6px;
+  color: #2f5d50;
+  border: 1px solid #2f5d50;
+  border-radius: 8px;
+  font-weight: 500;
 }
 
+.contact a:hover {
+  background-color: #2f5d50;
+  color: #ffffff;
+}
+
+/* ===== Footer ===== */
 footer {
   text-align: center;
-  padding: 10px;
-  font-size: 14px;
+  font-size: 13px;
   color: #777;
+  padding: 14px 0;
 }
 
-/* fullscreen */
+/* ===== Fullscreen Image ===== */
 .fullscreen {
-  display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.9);
-  justify-content: center;
+  display: none;
   align-items: center;
+  justify-content: center;
   z-index: 999;
 }
 
 .fullscreen img {
   max-width: 95%;
   max-height: 95%;
+  border-radius: 10px;
 }
