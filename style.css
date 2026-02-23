@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แนะนำที่พักและโรงแรม</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
 /* ===== Reset & Base ===== */
 body {
   margin: 0;
@@ -55,10 +63,38 @@ section h2 {
   object-fit: cover;
   border-radius: 10px;
   display: none;
+  cursor: pointer;
 }
 
 .slide.active {
   display: block;
+}
+
+/* ===== Slider Buttons (PC) ===== */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-btn:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
 }
 
 /* ===== Text ===== */
@@ -139,3 +175,103 @@ footer {
   max-height: 95%;
   border-radius: 10px;
 }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>ศานิตา คอทเทจ</h1>
+  <p>ที่พักบรรยากาศ สไตล์ธรรมชาติยุโรป</p>
+</header>
+
+<section>
+  <div class="slider" id="slider">
+    <img src="img1.jpg" class="slide active">
+    <img src="img2.jpg" class="slide">
+    <img src="img3.jpg" class="slide">
+
+    <!-- ปุ่มเลื่อน (PC) -->
+    <button class="slider-btn prev" onclick="prevSlide()">‹</button>
+    <button class="slider-btn next" onclick="nextSlide()">›</button>
+  </div>
+
+  <p>
+    ศานิตา คอทเทจเป็นที่พักขนาดเล็ก เหมาะสำหรับผู้ที่ต้องการพักผ่อน
+    มีบรรยากาศเงียบสงบ ให้ความเป็นส่วนตัว และตั้งอยู่ใกล้แหล่งชุมชน
+  </p>
+</section>
+
+<section>
+  <h2>ข้อมูลที่พัก</h2>
+  <ul>
+    <li>🛏️ ประเภทห้องพัก: ห้องพักมาตรฐาน</li>
+    <li>👥 รองรับผู้เข้าพัก: 2–4 คน</li>
+    <li>⏰ เวลาเช็กอิน: 12.00 น. / เช็กเอาต์: 12.00 น.</li>
+    <li>📍 ที่ตั้ง: อ.จอมบึง จังหวัดราชบุรี</li>
+  </ul>
+</section>
+
+<section class="contact">
+  <h2>ติดต่อที่พัก</h2>
+  <a href="tel:0819796890">📞 โทรศัพท์</a>
+  <a href="#" target="_blank">📘 Facebook</a>
+  <a href="#" target="_blank">📍 Google Maps</a>
+</section>
+
+<footer>
+  <p>© Web-based Hotel Information</p>
+</footer>
+
+<!-- Fullscreen -->
+<div class="fullscreen" id="fullscreen">
+  <img id="fullImg">
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+const slider = document.getElementById("slider");
+const fullscreen = document.getElementById("fullscreen");
+const fullImg = document.getElementById("fullImg");
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+/* swipe มือถือ */
+let startX = 0;
+slider.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+slider.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) nextSlide();
+  if (endX - startX > 50) prevSlide();
+});
+
+/* fullscreen */
+slides.forEach(img => {
+  img.addEventListener("click", () => {
+    fullscreen.style.display = "flex";
+    fullImg.src = img.src;
+  });
+});
+fullscreen.addEventListener("click", () => {
+  fullscreen.style.display = "none";
+});
+</script>
+
+</body>
+</html>
