@@ -139,4 +139,30 @@ section {
   background-color: #244a40;
 }
 
+/* ===== Soft Floating Icon Animation ===== */
+.soft-float {
+  display: inline-block;
+  animation: softFloat 4s ease-in-out infinite;
+}
+
+@keyframes softFloat {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-3px); }
+  40%  { transform: translateY(0); }
+  100% { transform: translateY(0); } /* ช่วงหยุด */
+}
+
+/* ===== Floating Evaluation Soft Motion ===== */
+.floating-eval-icon {
+  animation: softPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes softPulse {
+  0%   { transform: translateY(0) scale(1); }
+  25%  { transform: translateY(-4px) scale(1.05); }
+  50%  { transform: translateY(0) scale(1); }
+  100% { transform: translateY(0) scale(1); } /* พัก */
+}
+
+
 
