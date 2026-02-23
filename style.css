@@ -99,17 +99,13 @@ section {
   max-height: 95%;
 }
 
-/* ===== Floating Evaluation Advanced ===== */
+/* ===== Floating Evaluation (Draggable Only) ===== */
 .eval-wrapper {
   position: fixed;
   bottom: 20px;
   right: 16px;
   z-index: 9999;
   cursor: grab;
-}
-
-.eval-wrapper.hidden {
-  display: none;
 }
 
 /* ข้อความเตือน */
@@ -124,7 +120,7 @@ section {
   transition: opacity 0.5s ease;
 }
 
-/* ปุ่มกลม */
+/* ปุ่มกลม icon */
 .floating-eval-icon {
   width: 56px;
   height: 56px;
@@ -142,4 +138,5 @@ section {
 .floating-eval-icon:hover {
   background-color: #244a40;
 }
+
 
