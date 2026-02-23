@@ -64,6 +64,8 @@ section h2 {
   border-radius: 10px;
   display: none;
   cursor: pointer;
+  position: relative;
+  z-index: 1; /* รูปอยู่ชั้นล่าง */
 }
 
 .slide.active {
@@ -83,6 +85,7 @@ section h2 {
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 10; /* ⭐ สำคัญมาก ปุ่มอยู่ชั้นบน */
 }
 
 .slider-btn:hover {
@@ -112,22 +115,6 @@ ul {
 ul li {
   margin-bottom: 8px;
   font-size: 15px;
-}
-
-/* ===== Video Scroll ===== */
-.video-scroll {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 10px 0;
-  -webkit-overflow-scrolling: touch;
-}
-
-.video-scroll video {
-  width: 260px;
-  height: 150px;
-  border-radius: 10px;
-  background: #000;
 }
 
 /* ===== Contact ===== */
@@ -191,7 +178,6 @@ footer {
     <img src="img2.jpg" class="slide">
     <img src="img3.jpg" class="slide">
 
-    <!-- ปุ่มเลื่อน (PC) -->
     <button class="slider-btn prev" onclick="prevSlide()">‹</button>
     <button class="slider-btn next" onclick="nextSlide()">›</button>
   </div>
@@ -223,7 +209,6 @@ footer {
   <p>© Web-based Hotel Information</p>
 </footer>
 
-<!-- Fullscreen -->
 <div class="fullscreen" id="fullscreen">
   <img id="fullImg">
 </div>
