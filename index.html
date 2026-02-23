@@ -120,7 +120,7 @@ slides.forEach(img => {
 fullscreen.onclick = () => fullscreen.style.display = "none";
 </script>
 
-  <!-- Floating Evaluation Button (Icon Only) -->
+<!-- Floating Draggable Evaluation Button -->
 <div class="eval-wrapper" id="evalWrapper">
   <div class="eval-hint" id="evalHint">
     ช่วยประเมินหน่อยนะครับ 😊
@@ -137,16 +137,53 @@ fullscreen.onclick = () => fullscreen.style.display = "none";
 </div>
 
 <script>
-  const evalBtn = document.getElementById("evalBtn");
   const evalWrapper = document.getElementById("evalWrapper");
+  const evalBtn = document.getElementById("evalBtn");
   const evalHint = document.getElementById("evalHint");
 
-  // ซ่อนข้อความเตือนหลัง 5 วินาที
+  /* ซ่อนข้อความเตือนหลัง 5 วิ */
   setTimeout(() => {
     evalHint.style.opacity = "0";
   }, 5000);
 
-  // กดปุ่มแล้วซ่อนปุ่มทั้งชุด
+  /* ===== ลากได้ แต่ไม่ซ่อน ===== */
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  evalWrapper.addEventListener("mousedown", startDrag);
+  evalWrapper.addEventListener("touchstart", startDrag);
+
+  function startDrag(e) {
+    isDragging = true;
+    const evt = e.type === "touchstart" ? e.touches[0] : e;
+    offsetX = evt.clientX - evalWrapper.offsetLeft;
+    offsetY = evt.clientY - evalWrapper.offsetTop;
+
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("touchmove", drag);
+    document.addEventListener("mouseup", stopDrag);
+    document.addEventListener("touchend", stopDrag);
+  }
+
+  function drag(e) {
+    if (!isDragging) return;
+    const evt = e.type === "touchmove" ? e.touches[0] : e;
+    evalWrapper.style.left = evt.clientX - offsetX + "px";
+    evalWrapper.style.top = evt.clientY - offsetY + "px";
+    evalWrapper.style.right = "auto";
+    evalWrapper.style.bottom = "auto";
+  }
+
+  function stopDrag() {
+    isDragging = false;
+    document.removeEventListener("mousemove", drag);
+    document.removeEventListener("touchmove", drag);
+    document.removeEventListener("mouseup", stopDrag);
+    document.removeEventListener("touchend", stopDrag);
+  }
+
+  /* ===== กดเปิดฟอร์ม → ซ่อนปุ่ม ===== */
   evalBtn.addEventListener("click", () => {
     evalWrapper.style.display = "none";
   });
@@ -154,4 +191,5 @@ fullscreen.onclick = () => fullscreen.style.display = "none";
   
 </body>
 </html>
+
 
