@@ -1,52 +1,32 @@
-/* ===== Reset & Base ===== */
+/* ===== Base ===== */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: #f2f2f2;
+  background: #f2f2f2;
   color: #333;
-  line-height: 1.6;
 }
 
 /* ===== Header ===== */
 header {
-  background-color: #2f5d50;
-  color: #ffffff;
+  background: #2f5d50;
+  color: #fff;
   text-align: center;
   padding: 24px 16px;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 26px;
-}
-
-header p {
-  margin-top: 6px;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
 /* ===== Section ===== */
 section {
-  background: #ffffff;
+  background: #fff;
   margin: 12px;
   padding: 16px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
-section h2 {
-  margin-top: 0;
-  font-size: 20px;
-  color: #2f5d50;
-}
-
-/* ===== Image Slider ===== */
+/* ===== Slider ===== */
 .slider {
   position: relative;
   overflow: hidden;
   height: 220px;
-  margin-bottom: 12px;
 }
 
 .slide {
@@ -55,9 +35,6 @@ section h2 {
   object-fit: cover;
   border-radius: 10px;
   display: none;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
 }
 
 .slide.active {
@@ -69,79 +46,47 @@ section h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.55);
   color: #fff;
   border: none;
-  font-size: 22px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  font-size: 28px;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
   z-index: 10;
 }
 
-.slider-btn:hover {
-  background: rgba(0,0,0,0.7);
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+
+/* ===== Video ===== */
+.video-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
 }
 
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
-
-/* ===== Text ===== */
-p {
-  font-size: 15px;
-  margin-top: 10px;
-}
-
-/* ===== List ===== */
-ul {
-  padding-left: 18px;
-  margin: 0;
-}
-
-ul li {
-  margin-bottom: 8px;
-  font-size: 15px;
+.video-scroll video {
+  width: 260px;
+  border-radius: 10px;
 }
 
 /* ===== Contact ===== */
 .contact a {
   display: block;
-  padding: 10px;
-  margin: 8px 0;
   text-align: center;
-  text-decoration: none;
-  color: #2f5d50;
+  margin: 8px 0;
+  padding: 10px;
   border: 1px solid #2f5d50;
   border-radius: 8px;
-  font-weight: 500;
+  text-decoration: none;
+  color: #2f5d50;
 }
 
-.contact a:hover {
-  background-color: #2f5d50;
-  color: #ffffff;
-}
-
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  font-size: 13px;
-  color: #777;
-  padding: 14px 0;
-}
-
-/* ===== Fullscreen Image ===== */
+/* ===== Fullscreen ===== */
 .fullscreen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.9);
   display: none;
   align-items: center;
@@ -152,5 +97,4 @@ footer {
 .fullscreen img {
   max-width: 95%;
   max-height: 95%;
-  border-radius: 10px;
 }
