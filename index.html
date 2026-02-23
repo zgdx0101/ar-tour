@@ -18,13 +18,17 @@
     <img src="img1.jpg" class="slide active">
     <img src="img2.jpg" class="slide">
     <img src="img3.jpg" class="slide">
-    <img src="img2.jpg" class="slide">
-    <img src="img3.jpg" class="slide">
-    <img src="img2.jpg" class="slide">
-    <img src="img3.jpg" class="slide">
-    <img src="img2.jpg" class="slide">
-    <img src="img3.jpg" class="slide">
-    <img src="img2.jpg" class="slide">
+    <img src="img4.jpg" class="slide">
+    <img src="img5.jpg" class="slide">
+    <img src="img6.jpg" class="slide">
+    <img src="img7.jpg" class="slide">
+    <img src="img8.jpg" class="slide">
+    <img src="img9.jpg" class="slide">
+    <img src="img10.jpg" class="slide">
+
+    <!-- ปุ่มสำหรับ PC -->
+    <button class="slider-btn prev" id="prevBtn">‹</button>
+    <button class="slider-btn next" id="nextBtn">›</button>
   </div>
 
   <p>
@@ -49,8 +53,8 @@
     <video src="video1.mp4" controls playsinline></video>
     <video src="video2.mp4" controls playsinline></video>
     <video src="video3.mp4" controls playsinline></video>
-    <video src="video2.mp4" controls playsinline></video>
-    <video src="video3.mp4" controls playsinline></video>
+    <video src="video4.mp4" controls playsinline></video>
+    <video src="video5.mp4" controls playsinline></video>
   </div>
 </section>
 
@@ -65,7 +69,7 @@
   <p>© Web-based Hotel Information</p>
 </footer>
 
-<!-- Fullscreen Image -->
+<!-- Fullscreen -->
 <div class="fullscreen" id="fullscreen">
   <img id="fullImg">
 </div>
@@ -74,14 +78,27 @@
 let current = 0;
 const slides = document.querySelectorAll(".slide");
 const slider = document.getElementById("slider");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 const fullscreen = document.getElementById("fullscreen");
 const fullImg = document.getElementById("fullImg");
 
-function showSlide(index) {
+function showSlide() {
   slides.forEach(s => s.classList.remove("active"));
-  slides[index].classList.add("active");
+  slides[current].classList.add("active");
 }
 
+/* PC click */
+prevBtn.onclick = () => {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide();
+};
+nextBtn.onclick = () => {
+  current = (current + 1) % slides.length;
+  showSlide();
+};
+
+/* Mobile swipe */
 let startX = 0;
 slider.addEventListener("touchstart", e => {
   startX = e.touches[0].clientX;
@@ -90,22 +107,18 @@ slider.addEventListener("touchend", e => {
   let endX = e.changedTouches[0].clientX;
   if (startX - endX > 50) current = (current + 1) % slides.length;
   if (endX - startX > 50) current = (current - 1 + slides.length) % slides.length;
-
-  slides.forEach(s => s.classList.remove("active"));
-  slides[current].classList.add("active");
+  showSlide();
 });
 
+/* Fullscreen */
 slides.forEach(img => {
-  img.addEventListener("click", () => {
+  img.onclick = () => {
     fullscreen.style.display = "flex";
     fullImg.src = img.src;
-  });
+  };
 });
-fullscreen.addEventListener("click", () => {
-  fullscreen.style.display = "none";
-});
+fullscreen.onclick = () => fullscreen.style.display = "none";
 </script>
 
 </body>
 </html>
-
