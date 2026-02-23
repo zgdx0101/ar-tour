@@ -120,5 +120,38 @@ slides.forEach(img => {
 fullscreen.onclick = () => fullscreen.style.display = "none";
 </script>
 
+  <!-- Floating Evaluation Button (Icon Only) -->
+<div class="eval-wrapper" id="evalWrapper">
+  <div class="eval-hint" id="evalHint">
+    ช่วยประเมินหน่อยนะครับ 😊
+  </div>
+
+  <a
+    href="https://ลิงก์ฟอร์มของเฮีย"
+    target="_blank"
+    class="floating-eval-icon"
+    id="evalBtn"
+  >
+    📝
+  </a>
+</div>
+
+<script>
+  const evalBtn = document.getElementById("evalBtn");
+  const evalWrapper = document.getElementById("evalWrapper");
+  const evalHint = document.getElementById("evalHint");
+
+  // ซ่อนข้อความเตือนหลัง 5 วินาที
+  setTimeout(() => {
+    evalHint.style.opacity = "0";
+  }, 5000);
+
+  // กดปุ่มแล้วซ่อนปุ่มทั้งชุด
+  evalBtn.addEventListener("click", () => {
+    evalWrapper.style.display = "none";
+  });
+</script>
+  
 </body>
 </html>
+
