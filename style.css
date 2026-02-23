@@ -98,3 +98,43 @@ section {
   max-width: 95%;
   max-height: 95%;
 }
+
+/* ===== Floating Evaluation (Icon Only) ===== */
+.eval-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 16px;
+  z-index: 9999;
+}
+
+/* ข้อความเตือน */
+.eval-hint {
+  background: #ffffff;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: opacity 0.5s ease;
+}
+
+/* ปุ่มกลม */
+.floating-eval-icon {
+  width: 56px;
+  height: 56px;
+  background-color: #2f5d50;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.floating-eval-icon:hover {
+  background-color: #244a40;
+}
+
